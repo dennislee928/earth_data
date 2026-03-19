@@ -29,13 +29,11 @@
     "start": "vite",
     "test": "vite build --mode development && ember test --path dist"
   },
+  "dependencies": {
+    "@ember/string": "^4.0.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.29.0",
-    "@babel/eslint-parser": "^7.28.6",
-    "@babel/plugin-transform-runtime": "^7.29.0",
-    "@babel/runtime": "^7.28.6",
-    "@ember/optional-features": "^2.3.0",
-    "@ember/string": "^4.0.1",
     "@ember/test-helpers": "^5.4.1",
     "@ember/test-waiters": "^4.1.1",
     "@embroider/compat": "^4.1.13",

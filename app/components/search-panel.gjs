@@ -3,7 +3,7 @@ import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
-import { fn } from '@ember/helper';
+import { fn, get } from '@ember/helper';
 import { eq } from 'ember-truth-helpers';
 import EmberFlatpickr from 'ember-flatpickr/components/ember-flatpickr';
 
@@ -37,6 +37,17 @@ export default class SearchPanel extends Component {
 
   <template>
     <div class="sidebar">
+      <h3>NASA Events (EONET)</h3>
+      <button 
+        type="button" 
+        class="layer-item {{if @showEonet 'active'}}"
+        {{on "click" @onToggleEonet}}
+      >
+        {{if @showEonet "Hide Natural Events" "Show Natural Events"}}
+      </button>
+
+      <hr />
+
       <h3>GIBS Layers</h3>
       <div class="layer-list">
         {{#each this.gibsLayers as |layer|}}
@@ -47,6 +58,15 @@ export default class SearchPanel extends Component {
           >
             {{layer.title}}
           </button>
+        {{/each}}
+      </div>
+
+      <hr />
+
+      <h3>EPIC Full Disk</h3>
+      <div class="epic-gallery">
+        {{#each @epicImages as |img|}}
+          <img src={{img.url}} title={{img.caption}} class="epic-thumb" alt="Earth Full Disk" />
         {{/each}}
       </div>
 

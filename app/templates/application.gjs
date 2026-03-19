@@ -12,10 +12,16 @@ import SearchPanel from '../components/search-panel';
       @onSelectLayer={{@controller.selectLayer}}
       @date={{@controller.date}}
       @onDateChange={{@controller.updateDate}}
+      @eonetEvents={{@controller.eonetEvents}}
+      @epicImages={{@controller.epicImages}}
+      @showEonet={{@controller.showEonet}}
+      @onToggleEonet={{@controller.toggleEonet}}
     />
     <MapView 
       @selectedLayer={{@controller.selectedLayer}} 
       @gibsUrl={{@controller.gibsUrl}}
+      @eonetEvents={{@controller.eonetEvents}}
+      @showEonet={{@controller.showEonet}}
     />
   </div>
 
