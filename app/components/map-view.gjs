@@ -1,6 +1,4 @@
-import Component from '@glimmer/component';
 import { LeafletMap, TileLayer } from 'ember-leaflet';
-import { inject as service } from '@ember/service';
 
 <template>
   <div class="map-container">
@@ -13,5 +11,3 @@ import { inject as service } from '@ember/service';
     </LeafletMap>
   </div>
 </template>
-
-export default class MapViewComponent extends Component {}

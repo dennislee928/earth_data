@@ -87,32 +87,5 @@ export default class SearchPanel extends Component {
         {{/if}}
       </div>
     </div>
-
-    <style>
-      .layer-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      .layer-item {
-        text-align: left;
-        padding: 0.5rem;
-        cursor: pointer;
-        background: #f5f5f5;
-        border: 1px solid #ddd;
-      }
-      .layer-item.active {
-        background: #007bff;
-        color: white;
-      }
-      .dataset-list {
-        margin-top: 1rem;
-      }
-      .dataset-item {
-        padding: 0.5rem;
-        border-bottom: 1px solid #eee;
-        font-size: 0.9rem;
-      }
-    </style>
   </template>
 }
