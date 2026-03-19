@@ -1,10 +1,8 @@
-import { get } from 'ember-truth-helpers';
-import { action } from '@ember/object';
+import { get } from '@ember/object';
 import { modifier } from 'ember-modifier';
 import L from 'leaflet';
 
-const leafletMap = modifier((element, [args]) => {
-  const { selectedLayer, gibsUrl, eonetEvents, showEonet } = args ?? {};
+const leafletMap = modifier((element, [selectedLayer, gibsUrl, eonetEvents, showEonet]) => {
   const map = L.map(element).setView([0, 0], 2);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -22,15 +20,14 @@ const leafletMap = modifier((element, [args]) => {
   if (showEonet && Array.isArray(eonetEvents)) {
     for (const event of eonetEvents) {
       for (const geo of event?.geometry ?? []) {
-        const lat = get(geo.coordinates, 1);
-        const lng = get(geo.coordinates, 0);
+        const lat = geo?.coordinates?.[1];
+        const lng = geo?.coordinates?.[0];
         if (typeof lat === 'number' && typeof lng === 'number') {
           const marker = L.marker([lat, lng]).addTo(map);
           marker.bindPopup(
-            `<strong>${event?.title ?? ''}</strong><br/>Category: ${get(
-              get(event?.categories ?? [], 0),
-              'title'
-            )}<br/>Date: ${geo?.date ?? ''}`
+            `<strong>${event?.title ?? ''}</strong><br/>Category: ${
+              get(event, 'categories.0.title') ?? ''
+            }<br/>Date: ${geo?.date ?? ''}`
           );
           markers.push(marker);
         }
@@ -53,14 +50,7 @@ fetch('http://127.0.0.1:7810/ingest/ccbf1bea-e97b-4d0b-8b88-bd0b1424931b',{metho
   <div class="map-container">
     <div
       class="leaflet-map"
-      {{leafletMap
-        (hash
-          selectedLayer=@selectedLayer
-          gibsUrl=@gibsUrl
-          eonetEvents=@eonetEvents
-          showEonet=@showEonet
-        )
-      }}
+      {{leafletMap @selectedLayer @gibsUrl @eonetEvents @showEonet}}
     ></div>
   </div>
 </template>

@@ -1,5 +1,4 @@
 import Service from '@ember/service';
-import fetch from 'fetch';
 
 export default class EarthdataService extends Service {
   cmrEndpoint = 'https://cmr.earthdata.nasa.gov/search/collections.json';
