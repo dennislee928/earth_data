@@ -17,29 +17,20 @@ export default class ApplicationController extends Controller {
     this.fetchNasaApis();
   }
 
-  async fetchNasaApis() {
-    try {
-      this.eonetEvents = await this.earthdata.getEonetEvents();
-      this.epicImages = await this.earthdata.getEpicImages();
-    } catch (e) {
-      console.error('Error fetching NASA APIs:', e);
-    }
+  @action
+  selectLayer(layer) {
+    this.selectedLayer = layer;
   }
 
   get gibsUrl() {
     if (!this.selectedLayer) return null;
     return this.earthdata.getGibsUrl(
-      this.selectedLayer.id, 
-      this.date, 
-      this.selectedLayer.projection, 
-      this.selectedLayer.tileMatrixSet, 
+      this.selectedLayer.id,
+      this.date,
+      this.selectedLayer.projection,
+      this.selectedLayer.tileMatrixSet,
       this.selectedLayer.format
     );
-  }
-
-  @action
-  selectLayer(layer) {
-    this.selectedLayer = layer;
   }
 
   @action
@@ -52,5 +43,14 @@ export default class ApplicationController extends Controller {
   @action
   toggleEonet() {
     this.showEonet = !this.showEonet;
+  }
+
+  async fetchNasaApis() {
+    try {
+      this.eonetEvents = await this.earthdata.getEonetEvents();
+      this.epicImages = await this.earthdata.getEpicImages();
+    } catch (e) {
+      console.error('Error fetching NASA APIs:', e);
+    }
   }
 }

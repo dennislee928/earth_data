@@ -7,8 +7,8 @@ import SearchPanel from '../components/search-panel';
   <h2 id="title">NASA EarthData Explorer</h2>
 
   <div class="main-container">
-    <SearchPanel 
-      @selectedLayer={{@controller.selectedLayer}} 
+    <SearchPanel
+      @selectedLayer={{@controller.selectedLayer}}
       @onSelectLayer={{@controller.selectLayer}}
       @date={{@controller.date}}
       @onDateChange={{@controller.updateDate}}
@@ -17,8 +17,8 @@ import SearchPanel from '../components/search-panel';
       @showEonet={{@controller.showEonet}}
       @onToggleEonet={{@controller.toggleEonet}}
     />
-    <MapView 
-      @selectedLayer={{@controller.selectedLayer}} 
+    <MapView
+      @selectedLayer={{@controller.selectedLayer}}
       @gibsUrl={{@controller.gibsUrl}}
       @eonetEvents={{@controller.eonetEvents}}
       @showEonet={{@controller.showEonet}}
