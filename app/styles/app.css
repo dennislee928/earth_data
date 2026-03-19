@@ -1,1 +1,34 @@
-/* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+@import url("leaflet/dist/leaflet.css");
+@import url("flatpickr/dist/flatpickr.min.css");
+
+#title {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.main-container {
+  display: flex;
+  height: 80vh;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.sidebar {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.map-container {
+  flex: 3;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  position: relative;
+}
+
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}
